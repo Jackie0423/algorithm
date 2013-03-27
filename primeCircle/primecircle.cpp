@@ -1,4 +1,5 @@
 #include <iostream>
+#include <CMATH>
 #include <ITERATOR>
 #include <algorithm>
 using namespace std;
@@ -10,20 +11,22 @@ int A[N+1] = {0};
 bool vis[N+1] = {false};
 
 bool isp[N*2+1] = {true};
+
 void createPrimeList() {
 	
 	fill(isp+1, isp+2*N+1, true);
 
-	int a = 2;
+	
+
+	int m = (int)floor(sqrt(2*N)+0.5);
 	int s = 0;
-	while (a<=N) {
+	for (int p=2; p<=m; p++) {
 		for (int i=2; i<=N; i++) {
-			s = i*a;
+			s = i*p;
 			if (s<=2*N && isp[s]) {
 				isp[s] = false;
 			}			
 		}
-		a++;
 	}
 	
 }
